@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: "17 */2 * * *"
   workflow_dispatch:
+    inputs:
+      chains:
+        description: "Comma-separated chains to crawl (empty = base plus the hourly rotation)"
+        required: false
+        default: ""
   push:
     branches: [main]
     paths: ["site/**", "crawl.mjs", ".github/workflows/atlas.yml"]
@@ -29,6 +34,7 @@ jobs:
         env:
           ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
           ATLAS_INTERVAL_MINUTES: "120"
+          ATLAS_CHAINS: ${{ github.event.inputs.chains }}
         run: |
           mkdir -p public/atlas
           curl -fsS https://jennycruzy.github.io/ditto-atlas/atlas/meta.json -o /dev/null && for c in base arbitrum optimism ethereum; do curl -fsS "https://jennycruzy.github.io/ditto-atlas/atlas/$c.json" -o "public/atlas/$c.json" || true; done || true
