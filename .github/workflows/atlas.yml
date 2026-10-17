@@ -1,0 +1,49 @@
+name: atlas
+on:
+  schedule:
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["site/**", "crawl.mjs", ".github/workflows/atlas.yml"]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: atlas
+  cancel-in-progress: false
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Crawl (read-only chain reads; no keys in output)
+        env:
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+          ATLAS_INTERVAL_MINUTES: "120"
+        run: |
+          mkdir -p public/atlas
+          curl -fsS https://jennycruzy.github.io/ditto-atlas/atlas/meta.json -o /dev/null && for c in base arbitrum optimism ethereum; do curl -fsS "https://jennycruzy.github.io/ditto-atlas/atlas/$c.json" -o "public/atlas/$c.json" || true; done || true
+          node crawl.mjs public/atlas
+      - name: Check output has no credentials
+        run: |
+          ! grep -rE "alchemy\.com/v2/[A-Za-z0-9_-]{10,}|Bearer [A-Za-z0-9_-]{16,}" public/atlas
+          ! grep -rF "$ALCHEMY_API_KEY" public/atlas
+        env:
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+      - name: Assemble site
+        run: cp -r site/. public/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deploy
+        uses: actions/deploy-pages@v4
