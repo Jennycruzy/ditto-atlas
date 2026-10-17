@@ -38,7 +38,7 @@ function proofCard(p) {
 // Re-read every receipt from the chain's public RPC and re-run the core assertions in the browser.
 async function recheck(p, out, button) {
   button.disabled = true; out.textContent = "Reading receipts from the public RPC…";
-  const usdc = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", wallet = p.wallet.toLowerCase(), topic = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f160c47c2b4a2b4bd6ff1d0b4e";
+  const usdc = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", wallet = p.wallet.toLowerCase(), topic = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef";
   try {
     const all = [...p.enter.hashes, ...p.exit.hashes];
     const body = all.map((h, n) => ({ jsonrpc: "2.0", id: n, method: "eth_getTransactionReceipt", params: [h] }));
