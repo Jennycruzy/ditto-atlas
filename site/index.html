@@ -1,2 +1,53 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ditto atlas</title></head>
-<body><h1>Ditto atlas</h1><p>Evidence index for the Ditto PayBox plugin: <a href="atlas/meta.json">meta.json</a>, <a href="atlas/base.json">base.json</a>.</p></body></html>
+<!doctype html><html lang="en"><head><script>document.documentElement.classList.add("js")</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ditto: copy what real wallets did today</title><meta name="description" content="Tell your agent a goal. Ditto finds a real onchain move that did it today, rebuilds it for your wallet, sends it through PayBox for your approval, and proves onchain that it landed.">
+<meta property="og:title" content="Ditto: copy what real wallets did today"><meta property="og:description" content="Tell your agent a goal. Ditto finds a real onchain move that did it today, rebuilds it for your wallet, sends it through PayBox for your approval, and proves onchain that it landed."><meta property="og:image" content="https://jennycruzy.github.io/ditto-atlas/og.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body data-page="home"><header class="top"><div class="wrap"><a class="brand" href="index.html"><span class="mark"><svg class="dm" viewBox="0 0 20 16" aria-hidden="true"><path d="M5 2 L2.5 14 M13 2 L10.5 14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg></span>Ditto</a><nav class="links" aria-label="Main"><a href="index.html" aria-current="page">Home</a><a href="today.html">Today</a><a href="tx.html">Decode a tx</a><a href="proofs.html">Proofs</a><a href="safety.html">Safety</a><a href="how.html">How it works</a><a href="judges.html">Judges</a></nav></div></header>
+<main><div class="wrap">
+<section class="hero">
+  <div>
+    <p class="eyebrow">A PayBox plugin for your agent</p>
+    <h1>Every DeFi move ever made is a <em>working example.</em></h1>
+    <p class="lede">Tell your agent a goal. Ditto finds a real transaction that did it today, rebuilds it for <strong>your</strong> wallet with fresh calls, sends it through PayBox for your approval, then proves onchain that it landed, and that you can get out.</p>
+    <div class="cta"><a class="button" href="today.html">See today's real moves</a><a class="button ghost" href="tx.html">Decode any transaction</a></div>
+  </div>
+  <div class="copy-demo" aria-label="Animation: a stranger's real deposit is copied into a 1 USDC plan for your wallet">
+    <div class="slip">
+      <div class="label"><span>Seen onchain · Base</span><span>0x48c2…abb2</span></div>
+      <div class="row"><span>who</span><span>smart wallet via Morpho bundler</span></div>
+      <div class="row"><span>did</span><span>deposited 644.83 USDC</span></div>
+      <div class="row"><span>into</span><span>Steakhouse Prime USDC</span></div>
+    </div>
+    <div class="ditto-mark"><svg class="dm" viewBox="0 0 20 16" aria-hidden="true"><path d="M5 2 L2.5 14 M13 2 L10.5 14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg></div>
+    <div class="slip yours">
+      <div class="label"><span>Ditto · your copy</span><span>plan 1bb7…</span></div>
+      <div class="row"><span>you</span><span class="typed" data-type="put 1.000000 USDC">put 1.000000 USDC</span></div>
+      <div class="row"><span>into</span><span class="typed" data-type="Steakhouse Prime USDC">Steakhouse Prime USDC</span></div>
+      <div class="tick" style="margin-top:10px">exit simulated: 0.999999 back</div>
+      <div class="tick">exact approval, back to 0 after</div>
+      <div class="tick">proof: 1.000000 USDC returned</div>
+      <span class="stamp">LANDED</span>
+    </div>
+  </div>
+</section>
+<section class="stats">
+  <div class="stat-card reveal"><div class="stat" data-count id="live-count">0</div><p id="live-detail"><span class="live-dot"></span>real deposits on Base in the last 24 h, into places Ditto can rebuild</p></div>
+  <div class="stat-card reveal"><div class="stat" data-count id="pass-count">0</div><p>places that passed every check right now</p></div>
+  <div class="stat-card reveal"><div class="stat" data-count id="proof-count">0</div><p>live runs with money: 1 USDC in, all of it back, proven</p></div>
+</section>
+<h2>Say this to <em>your agent</em></h2>
+<div class="grid">
+  <div class="card reveal"><h3>A goal</h3><div class="say">Put 1 USDC to work on Base with Ditto. Show me what real people used today.</div></div>
+  <div class="card reveal"><h3>Copy a transaction</h3><div class="say">Ditto: do what 0x48c2…abb2 did, with 1 USDC.</div></div>
+  <div class="card reveal"><h3>Get out</h3><div class="say">Ditto: how's my money? Get me out of 1.</div></div>
+</div>
+<h2>Paste <em>any</em> transaction</h2>
+<div class="card reveal"><p class="small muted" style="margin-top:0">Saw a move on X? Ditto says in plain words what it really did, through routers, smart wallets, Safes and bundlers, and whether it can rebuild it for you.</p>
+<form class="paste" action="tx.html"><select name="c" aria-label="Chain"><option value="base">Base</option><option value="arbitrum">Arbitrum</option><option value="optimism">Optimism</option><option value="ethereum">Ethereum</option></select><input name="h" placeholder="0x… transaction hash" aria-label="Transaction hash" required><button>Decode</button></form></div>
+<h2>Use it in <em>PayBox</em></h2>
+<ol class="steps"><li class="reveal">In PayBox, enable the <strong>Ditto</strong> plugin.</li><li class="reveal">Ask your agent for a goal. Ditto answers with real evidence and a plan: exact amounts in and out, the exit simulated now, every check.</li><li class="reveal">Approve each step in PayBox. Ditto then shows a proof card: what left your wallet, what arrived, allowance back to 0, exit open.</li></ol>
+<h2>Latest <em>proofs</em></h2><div class="grid" id="latest-proofs"></div>
+</div></main>
+<footer><div class="wrap"><span class="brand"><span class="mark"><svg class="dm" viewBox="0 0 20 16" aria-hidden="true"><path d="M5 2 L2.5 14 M13 2 L10.5 14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg></span>Ditto</span><span>Ditto is a PayBox plugin. Nothing on this site can move money.</span><a href="atlas/meta.json">Atlas data</a><a href="https://github.com/Jennycruzy/ditto-atlas">Source of this site</a></div></footer>
+<script type="module" src="app.js"></script></body></html>

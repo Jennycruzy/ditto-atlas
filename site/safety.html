@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><script>document.documentElement.classList.add("js")</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Safety: what Ditto never does</title><meta name="description" content="Ditto copies the action, never a stranger's calldata. Exit first, exact approvals, verified deployers, wallet binding and a proof for every plan.">
+<meta property="og:title" content="Safety: what Ditto never does"><meta property="og:description" content="Ditto copies the action, never a stranger's calldata. Exit first, exact approvals, verified deployers, wallet binding and a proof for every plan."><meta property="og:image" content="https://jennycruzy.github.io/ditto-atlas/og.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body data-page="safety"><header class="top"><div class="wrap"><a class="brand" href="index.html"><span class="mark"><svg class="dm" viewBox="0 0 20 16" aria-hidden="true"><path d="M5 2 L2.5 14 M13 2 L10.5 14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg></span>Ditto</a><nav class="links" aria-label="Main"><a href="index.html">Home</a><a href="today.html">Today</a><a href="tx.html">Decode a tx</a><a href="proofs.html">Proofs</a><a href="safety.html" aria-current="page">Safety</a><a href="how.html">How it works</a><a href="judges.html">Judges</a></nav></div></header>
+<main><div class="wrap">
+<p class="eyebrow">Safety</p><h1>Safety</h1><p class="lede">Ditto only proposes moves you can undo, built from fresh standard calls, with every amount checked before and after.</p>
+<div class="grid">
+<div class="card reveal"><h3>Decode, don't replay</h3><p class="small">A stranger's transaction is evidence of which contract real people used. Ditto never re-sends their calldata; it builds a fresh standard call for your wallet.</p></div>
+<div class="card reveal"><h3>Exit before entry</h3><p class="small">Before any plan is signed, the whole round trip (deposit, then take it all out) is simulated at the current block. If getting out fails, Ditto refuses.</p></div>
+<div class="card reveal"><h3>Verified deployers only</h3><p class="small">Anyone can be explained; only contracts from known factories and registries (Aave, Compound, Moonwell, Morpho, Euler, Spark, Fluid, Lido, Uniswap, Aerodrome) can be executed.</p></div>
+<div class="card reveal"><h3>Exact permissions</h3><p class="small">Approvals are set to exactly the amount, never unlimited, and must read 0 after the deposit. Leftover permissions get a one-step reset.</p></div>
+<div class="card reveal"><h3>Your wallet, bound</h3><p class="small">Exits start with a 0-value transaction from your wallet to itself, so a different wallet can never be paid out. Every proof checks who signed.</p></div>
+<div class="card reveal"><h3>Signed plans</h3><p class="small">Ditto signs each plan it checked. An edited amount, contract or wallet is refused. Plans expire after 30 minutes.</p></div>
+</div>
+<h2>What Ditto never does</h2><p>Borrow, leverage, bridge, unlimited approvals, approvals to anything but the recipe's own contract, transactions on contracts outside its recipes, re-sending a stranger's calldata, or more than one transaction per approval.</p>
+<h2>Exit classes</h2><div class="table-wrap card"><table><thead><tr><th>Family</th><th>Getting out</th><th>You must accept</th></tr></thead><tbody>
+<tr><td>Lending (Aave, Compound, Moonwell), savings vaults</td><td>Instant; simulated now at every step and in every proof</td><td>—</td></tr>
+<tr><td>Lido staking</td><td>A withdrawal queue (usually days) or a market sale</td><td>queued</td></tr>
+<tr><td>Liquidity pools</td><td>A mix of both tokens that changes with the price</td><td>market</td></tr></tbody></table></div></div></main>
+<footer><div class="wrap"><span class="brand"><span class="mark"><svg class="dm" viewBox="0 0 20 16" aria-hidden="true"><path d="M5 2 L2.5 14 M13 2 L10.5 14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg></span>Ditto</span><span>Ditto is a PayBox plugin. Nothing on this site can move money.</span><a href="atlas/meta.json">Atlas data</a><a href="https://github.com/Jennycruzy/ditto-atlas">Source of this site</a></div></footer>
+<script type="module" src="app.js"></script></body></html>

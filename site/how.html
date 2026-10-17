@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><script>document.documentElement.classList.add("js")</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How Ditto works</title><meta name="description" content="Evidence, recipe, checks, exit, proof: how Ditto turns real onchain moves into safe plans for your agent.">
+<meta property="og:title" content="How Ditto works"><meta property="og:description" content="Evidence, recipe, checks, exit, proof: how Ditto turns real onchain moves into safe plans for your agent."><meta property="og:image" content="https://jennycruzy.github.io/ditto-atlas/og.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body data-page="how"><header class="top"><div class="wrap"><a class="brand" href="index.html"><span class="mark"><svg class="dm" viewBox="0 0 20 16" aria-hidden="true"><path d="M5 2 L2.5 14 M13 2 L10.5 14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg></span>Ditto</a><nav class="links" aria-label="Main"><a href="index.html">Home</a><a href="today.html">Today</a><a href="tx.html">Decode a tx</a><a href="proofs.html">Proofs</a><a href="safety.html">Safety</a><a href="how.html" aria-current="page">How it works</a><a href="judges.html">Judges</a></nav></div></header>
+<main><div class="wrap">
+<p class="eyebrow">How it works</p><h1>How it works</h1>
+<ol class="steps"><li><strong>Evidence.</strong> Every 2 hours the atlas reads recent real deposits into lending markets, savings vaults and pools on Base, Arbitrum, Optimism and Ethereum, recognising them through routers, smart wallets, Safes and bundlers.</li>
+<li><strong>Recipe.</strong> Six families: Aave v3, ERC-4626 savings vaults (Morpho, Euler, Spark, Fluid), Compound v3, Moonwell, Lido, and Uniswap v3 / Aerodrome Slipstream liquidity. Each recipe builds standard calls.</li>
+<li><strong>Checks.</strong> Real use, age, size, share-price history, pause and cap flags, token sanity, verified deployer, gas, and a simulated round trip.</li>
+<li><strong>Plan and steps.</strong> One transaction per PayBox approval. Progress comes only from this plan's own transactions, so retries, lost sessions and double submits are safe.</li>
+<li><strong>Proof.</strong> Exact amount out, receipt in, nothing else moved, allowance 0, exit open, gas paid.</li></ol>
+<h2>The tools</h2><div class="table-wrap card"><table><tbody>
+<tr><td><code>ditto_find</code></td><td>Goal to evidence-backed places, most used today</td></tr>
+<tr><td><code>ditto_explain_tx</code></td><td>What a transaction really did, and whether Ditto can rebuild it</td></tr>
+<tr><td><code>ditto_wallet_moves</code></td><td>What a wallet did recently</td></tr>
+<tr><td><code>ditto_plan</code></td><td>The exact, signed plan for your wallet</td></tr>
+<tr><td><code>ditto_preview_step</code> / <code>ditto_step</code></td><td>The next single transaction, previewed, then proposed to PayBox</td></tr>
+<tr><td><code>ditto_verify</code></td><td>The proof card</td></tr>
+<tr><td><code>ditto_positions</code> / <code>ditto_exit_plan</code></td><td>How's my money, and get out</td></tr>
+<tr><td><code>ditto_dry_run</code></td><td>The whole thing with no money</td></tr>
+<tr><td><code>ditto_second_opinion</code> / <code>ditto_compare_opinion</code></td><td>Pay an independent x402 source (at most $0.05) and compare it with the chain</td></tr></tbody></table></div>
+<h2>Second opinions</h2><p>On 17 Oct a paid source reported 5.13% for Compound v3 on Base while the chain and a second source both read 3.27%. Ditto showed the disagreement next to the plan. Two other sources rejected PayBox's x402 payment and are disabled.</p></div></main>
+<footer><div class="wrap"><span class="brand"><span class="mark"><svg class="dm" viewBox="0 0 20 16" aria-hidden="true"><path d="M5 2 L2.5 14 M13 2 L10.5 14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg></span>Ditto</span><span>Ditto is a PayBox plugin. Nothing on this site can move money.</span><a href="atlas/meta.json">Atlas data</a><a href="https://github.com/Jennycruzy/ditto-atlas">Source of this site</a></div></footer>
+<script type="module" src="app.js"></script></body></html>
